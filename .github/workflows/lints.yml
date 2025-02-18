@@ -20,6 +20,12 @@ jobs:
     steps:
       - uses: runs-on/action@v1
       - uses: actions/checkout@v4
+
+      - uses: codespell-project/actions-codespell@v2
+        with:
+          skip: Cargo.lock,./book/pnpm-lock.yaml,*.txt,./crates/toolchain/openvm/src/memcpy.s,./crates/toolchain/openvm/src/memset.s,
+          ignore_words_file: .codespellignore
+
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
         with:
