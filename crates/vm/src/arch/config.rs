@@ -4,7 +4,7 @@ use derive_new::new;
 use openvm_circuit::system::memory::MemoryTraceHeights;
 use openvm_instructions::program::DEFAULT_MAX_NUM_PUBLIC_VALUES;
 use openvm_poseidon2_air::Poseidon2Config;
-use openvm_stark_backend::{p3_field::PrimeField32, ChipUsageGetter, Stateful};
+use openvm_stark_backend::{p3_field::PrimeField32, ChipUsageGetter};
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
 use super::{
@@ -25,8 +25,8 @@ pub fn vm_poseidon2_config<F: PrimeField32>() -> Poseidon2Config<F> {
 }
 
 pub trait VmConfig<F: PrimeField32>: Clone + Serialize + DeserializeOwned {
-    type Executor: InstructionExecutor<F> + AnyEnum + ChipUsageGetter + Stateful<Vec<u8>>;
-    type Periphery: AnyEnum + ChipUsageGetter + Stateful<Vec<u8>>;
+    type Executor: InstructionExecutor<F> + AnyEnum + ChipUsageGetter;
+    type Periphery: AnyEnum + ChipUsageGetter;
 
     /// Must contain system config
     fn system(&self) -> &SystemConfig;

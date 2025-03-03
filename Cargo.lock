@@ -578,7 +578,7 @@ dependencies = [
  "http 0.2.12",
  "http 1.2.0",
  "once_cell",
- "p256",
+ "p256 0.11.1",
  "percent-encoding",
  "ring",
  "sha2",
@@ -3814,6 +3814,7 @@ dependencies = [
  "openvm-ecc-sw-macros",
  "openvm-platform",
  "openvm-rv32im-guest",
+ "p256 0.13.2",
  "rand",
  "serde",
  "strum_macros",
@@ -4478,7 +4479,7 @@ dependencies = [
 [[package]]
 name = "openvm-stark-backend"
 version = "1.0.0-rc.0"
-source = "git+https://github.com/openvm-org/stark-backend.git?rev=5819e43af08f6625a246e5e389757970f7c2a80c#5819e43af08f6625a246e5e389757970f7c2a80c"
+source = "git+https://github.com/openvm-org/stark-backend.git?rev=bc364134b8315c27bfd29c6e77ac79fe77090137#bc364134b8315c27bfd29c6e77ac79fe77090137"
 dependencies = [
  "async-trait",
  "cfg-if",
@@ -4506,7 +4507,7 @@ dependencies = [
 [[package]]
 name = "openvm-stark-sdk"
 version = "1.0.0-rc.0"
-source = "git+https://github.com/openvm-org/stark-backend.git?rev=5819e43af08f6625a246e5e389757970f7c2a80c#5819e43af08f6625a246e5e389757970f7c2a80c"
+source = "git+https://github.com/openvm-org/stark-backend.git?rev=bc364134b8315c27bfd29c6e77ac79fe77090137#bc364134b8315c27bfd29c6e77ac79fe77090137"
 dependencies = [
  "derivative",
  "derive_more 0.99.18",
@@ -4637,6 +4638,15 @@ dependencies = [
  "ecdsa 0.14.8",
  "elliptic-curve 0.12.3",
  "sha2",
+]
+
+[[package]]
+name = "p256"
+version = "0.13.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c9863ad85fa8f4460f9c48cb909d38a0d689dba1f6f6988a5e3e0d31071bcd4b"
+dependencies = [
+ "elliptic-curve 0.13.8",
 ]
 
 [[package]]

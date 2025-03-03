@@ -32,7 +32,7 @@ use openvm_stark_backend::{
     p3_maybe_rayon::prelude::*,
     prover::types::AirProofInput,
     rap::{BaseAirWithPublicValues, PartitionedBaseAir},
-    AirRef, Chip, ChipUsageGetter, Stateful,
+    AirRef, Chip, ChipUsageGetter,
 };
 use serde::{Deserialize, Serialize};
 use static_assertions::const_assert_eq;
@@ -825,17 +825,6 @@ where
 
         let matrix = RowMajorMatrix::new(flat_trace, OVERALL_WIDTH);
         AirProofInput::simple_no_pis(matrix)
-    }
-}
-
-impl<F: PrimeField32> Stateful<Vec<u8>> for FriReducedOpeningChip<F> {
-    fn load_state(&mut self, state: Vec<u8>) {
-        self.records = bitcode::deserialize(&state).unwrap();
-        self.height = self.records.iter().map(|record| record.get_height()).sum();
-    }
-
-    fn store_state(&self) -> Vec<u8> {
-        bitcode::serialize(&self.records).unwrap()
     }
 }
 

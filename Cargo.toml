@@ -104,8 +104,8 @@ lto = "thin"
 
 [workspace.dependencies]
 # Stark Backend
-openvm-stark-backend = { git = "https://github.com/openvm-org/stark-backend.git", rev = "5819e43af08f6625a246e5e389757970f7c2a80c", default-features = false }
-openvm-stark-sdk = { git = "https://github.com/openvm-org/stark-backend.git", rev = "5819e43af08f6625a246e5e389757970f7c2a80c", default-features = false }
+openvm-stark-backend = { git = "https://github.com/openvm-org/stark-backend.git", rev = "bc364134b8315c27bfd29c6e77ac79fe77090137", default-features = false }
+openvm-stark-sdk = { git = "https://github.com/openvm-org/stark-backend.git", rev = "bc364134b8315c27bfd29c6e77ac79fe77090137", default-features = false }
 
 # OpenVM
 openvm-sdk = { path = "crates/sdk", default-features = false }
@@ -204,7 +204,9 @@ toml = "0.8.14"
 lazy_static = "1.5.0"
 once_cell = "1.19.0"
 derive-new = "0.6.0"
-derive_more = "1.0.0"
+derive_more = { version = "1.0.0", features = [
+    "display",
+], default-features = false }
 derivative = "2.2.0"
 strum_macros = "0.26.4"
 strum = { version = "0.26.3", features = ["derive"] }
@@ -240,6 +242,7 @@ bytemuck = { version = "1.20.0", default-features = false }
 # cryptography, default-features = false for no_std
 tiny-keccak = { version = "2.0.2", features = ["keccak"] }
 k256 = { version = "0.13.3", default-features = false }
+p256 = { version = "0.13.2", default-features = false }
 elliptic-curve = { version = "0.13.8", default-features = false }
 ecdsa = { version = "0.16.9", default-features = false }
 num-bigint = { version = "0.4.6", default-features = false }

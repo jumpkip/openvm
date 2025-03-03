@@ -6,10 +6,7 @@
 use core::mem::size_of;
 use std::{
     borrow::{Borrow, BorrowMut},
-    sync::{
-        atomic::{AtomicU32, Ordering},
-        Arc,
-    },
+    sync::{atomic::AtomicU32, Arc},
 };
 
 use openvm_circuit_primitives_derive::AlignedBorrow;
@@ -21,7 +18,7 @@ use openvm_stark_backend::{
     p3_matrix::{dense::RowMajorMatrix, Matrix},
     prover::types::AirProofInput,
     rap::{get_air_name, BaseAirWithPublicValues, PartitionedBaseAir},
-    AirRef, Chip, ChipUsageGetter, Stateful,
+    AirRef, Chip, ChipUsageGetter,
 };
 use tracing::instrument;
 
@@ -268,19 +265,6 @@ impl ChipUsageGetter for SharedVariableRangeCheckerChip {
 
     fn trace_width(&self) -> usize {
         self.0.trace_width()
-    }
-}
-
-impl Stateful<Vec<u8>> for SharedVariableRangeCheckerChip {
-    fn load_state(&mut self, state: Vec<u8>) {
-        let count_vals: Vec<u32> = bitcode::deserialize(&state).unwrap();
-        for (x, val) in self.0.count.iter().zip(count_vals) {
-            x.store(val, Ordering::Relaxed);
-        }
-    }
-
-    fn store_state(&self) -> Vec<u8> {
-        bitcode::serialize(&self.0.count).unwrap()
     }
 }
 
